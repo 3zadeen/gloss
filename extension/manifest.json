@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Gloss for every tab",
+  "version": "0.1.0",
+  "description": "Highlight any line on any page and ask Gloss about it. The answer appears beside the page, citing the paragraphs it used.",
+  "permissions": ["storage", "contextMenus"],
+  "host_permissions": ["https://gloss-lovat.vercel.app/*", "http://localhost:3100/*"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "commands": {
+    "ask-selection": {
+      "suggested_key": { "default": "Ctrl+Shift+G", "mac": "Command+Shift+G" },
+      "description": "Ask Gloss about the selected text"
+    }
+  }
+}
