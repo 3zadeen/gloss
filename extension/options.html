@@ -1,0 +1,39 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gloss for every tab: settings</title>
+<style>
+  body { font: 15px/1.5 Georgia, serif; max-width: 520px; margin: 48px auto; padding: 0 20px; color: #1c1a17; background: #faf8f4; }
+  @media (prefers-color-scheme: dark) { body { color: #ece8e0; background: #151412; } input, select { background: #211f1c; color: inherit; border-color: #3a3631; } }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  p.hint { margin: 0 0 28px; opacity: 0.65; font-size: 13px; }
+  label { display: block; margin: 18px 0 6px; font-weight: 600; font-size: 13px; }
+  input, select { width: 100%; box-sizing: border-box; padding: 9px 10px; font: inherit; border: 1px solid #cfc8bb; border-radius: 6px; }
+  small { display: block; margin-top: 4px; opacity: 0.6; font-size: 12px; }
+  .row { display: flex; align-items: center; gap: 8px; margin-top: 18px; }
+  .row input { width: auto; }
+  button { margin-top: 26px; padding: 9px 18px; font: inherit; border: 0; border-radius: 6px; background: #1c1a17; color: #faf8f4; cursor: pointer; }
+  #status { margin-left: 12px; font-size: 13px; opacity: 0.7; }
+</style>
+<h1>Gloss for every tab</h1>
+<p class="hint">Highlight text on any page, then press the Ask button, the keyboard shortcut, or right-click.</p>
+
+<label for="base">Gloss server</label>
+<input id="base" type="url" placeholder="https://gloss-lovat.vercel.app" />
+<small>Your deployed Gloss (or http://localhost:3100 while developing). Chrome asks permission when you change it.</small>
+
+<label for="apiKey">Together AI key (optional)</label>
+<input id="apiKey" type="password" placeholder="Leave empty to use the server's free allowance" autocomplete="off" />
+<small>Stored only in this browser and sent to your Gloss server with each question.</small>
+
+<label for="length">Answer length</label>
+<select id="length">
+  <option value="short">Short</option>
+  <option value="normal">Concise</option>
+  <option value="long">Thorough</option>
+</select>
+
+<div class="row"><input id="search" type="checkbox" /><label for="search" style="margin: 0; font-weight: 400">Let the model search the web when it helps</label></div>
+
+<button id="save">Save</button><span id="status"></span>
+<script src="options.js"></script>
