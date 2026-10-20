@@ -23,6 +23,19 @@ all behave exactly as in the web app. No server changes are needed.
   so keys never reach the page and CORS doesn't apply.
 - The UI lives in a closed shadow root, so page styles can't affect it.
 
+## Test
+
+`extension/test/e2e.cjs` loads the extension in real Chromium against a mock `/api/ask` server and checks the
+button, panel, request payload, streaming render, citation scroll, follow-ups, errors, long-page windowing,
+the options page, and the shortcut/context-menu message path:
+
+```
+npm i -D playwright && npx playwright install chromium
+node extension/test/e2e.cjs
+```
+
+Not covered: the real keyboard shortcut and context-menu clicks (browser UI), and a live model.
+
 ## Not done yet
 
 - Saving answers to the Library (needs an extension-friendly auth path to `/api/sync`).
